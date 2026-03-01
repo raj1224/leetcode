@@ -5,9 +5,9 @@ services:
     image: postgres:15
     container_name: leetcode_build
     environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: password123
       POSTGRES_DB: leetcode
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres123
     ports:
       - "5433:5432"
     volumes:
@@ -15,4 +15,4 @@ services:
     restart: unless-stopped
 
 volumes:
-  leetcode_db_data:
+  leetcode_db_data:   

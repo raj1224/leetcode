@@ -6,16 +6,28 @@
 
 generator client {
   provider = "prisma-client"
-  output   = "../src/generated"
-
+  output = "../generated/prisma"
 }
 
 datasource db {
   provider = "postgresql"
+  // url is now defined in prisma.config.mjs
+}   
+
+enum UserRole {
+  USER
+  ADMIN
 }
 
-model User {
+model User{
   id Int @id @default(autoincrement())
-  name String
+  clerkId String @unique
   email String @unique
+  role UserRole @default(USER)
+  firstName String?
+  lastName String?
+  imageUrl String?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
